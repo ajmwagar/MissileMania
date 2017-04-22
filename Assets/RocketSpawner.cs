@@ -27,7 +27,7 @@ public class RocketSpawner : MonoBehaviour {
 
     public void Spawn()
     {
-        var rocket = RocketFactory.Instance.CreateRocket();
+        var rocket = RocketFactory.CreateRocket(RocketType.Simple);
         rocketList.Add(rocket);
 
         var rb = rocket.GetComponent<Rigidbody>();
