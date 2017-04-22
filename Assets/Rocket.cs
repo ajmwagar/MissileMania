@@ -23,10 +23,12 @@ public class Rocket : MonoBehaviour {
         }
 	}
 
-    public void Initialize(RocketType type, float speed, GameObject target)
+    public void Initialize(RocketType type, GameObject target)
     {
         rocketType = type;
         Target = target;
+
+        rb.velocity = (Target.transform.position - transform.position).normalized * speed;
     }
 
     private void FixedUpdate()

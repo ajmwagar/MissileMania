@@ -43,15 +43,17 @@ public class RocketFactory : MonoBehaviour {
 
         if(rocket == null)
         {
-            rocket = Instantiate(Instance.RocketPrefabs[0], Vector3.zero, Quaternion.identity);
+            rocket = Instantiate(Instance.RocketPrefabs[0], Instance.graveyardPosition, Quaternion.identity);
             Instance.factory[type].Add(rocket);
         }
 
+        rocket.SetActive(true);
         return rocket;
     }
 
-    public static void DestroyRocket(GameObject rocket, RocketType type)
+    public static void DestroyRocket(GameObject rocket)
     {
+        var type = rocket.GetComponent<Rocket>().rocketType;
         rocket.SetActive(false);
         rocket.transform.position = Instance.graveyardPosition;
         Instance.factory[type].DestroyObject(rocket);

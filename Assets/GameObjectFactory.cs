@@ -44,7 +44,6 @@ public class GameObjectFactory {
         lock (_lock)
         {
             obj.SetActive(false);
-            obj.transform.position = graveyardPosition;
 
             for (int i = 0; i < poolSize; i++)
             {
