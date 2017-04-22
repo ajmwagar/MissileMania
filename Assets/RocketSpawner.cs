@@ -33,6 +33,7 @@ public class RocketSpawner : MonoBehaviour {
         var rb = rocket.GetComponent<Rigidbody>();
 
         rocket.transform.position = gameObject.transform.position;
+        //set direction/rotation to target
         rb.velocity = (Target.transform.position - transform.position).normalized * speed;
         //rb.velocity.y = 0;
         Debug.Log("Rocket Spaned!!!!");
