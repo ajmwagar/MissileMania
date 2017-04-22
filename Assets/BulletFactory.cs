@@ -36,6 +36,11 @@ public class BulletFactory : MonoBehaviour
         }
     }
 
+    public static GameObject CreateBullet()
+    {
+        return CreateBullet(BulletType.Simple);
+    }
+
     public static GameObject CreateBullet(BulletType type)
     {
         var bullet = Instance.factory[type].GetObject();
