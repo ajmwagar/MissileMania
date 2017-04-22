@@ -19,7 +19,7 @@ public class Rocket : MonoBehaviour {
     void Update () {
 		if(Input.GetKeyUp(DestroyKey))
         {
-            RocketFactory.DestroyRocket(gameObject, rocketType);
+            RocketFactory.DestroyRocket(gameObject);
         }
 	}
 
