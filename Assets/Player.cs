@@ -14,16 +14,6 @@ public class Player : MonoBehaviour {
 		
 	}
 
-
-    private void OnCollisionEnter(Collision collision)
-    {
-        Debug.Log("Collision!!! " + collision.gameObject.tag);
-        if (collision.gameObject.tag == "Projectile")
-        {
-            RocketFactory.Instance.DestroyRocket(collision.gameObject);
-        }
-    }
-
     private void OnTriggerEnter(Collider other)
     {
         Debug.Log("Trigger!!! " + other.gameObject.tag);
