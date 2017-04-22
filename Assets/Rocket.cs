@@ -10,6 +10,7 @@ public class Rocket : MonoBehaviour {
     public float speed;
     public Rigidbody rb;
     public RocketType rocketType;
+    public Vector3 rocketRotation;
 
     private void Awake()
     {
@@ -37,5 +38,7 @@ public class Rocket : MonoBehaviour {
         {
             rb.velocity = (Target.transform.position - transform.position).normalized * speed;
         }
+        
+        transform.rotation = Quaternion.LookRotation(rb.velocity) * Quaternion.Euler(rocketRotation);
     }
 }
