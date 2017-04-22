@@ -5,14 +5,31 @@ using UnityEngine;
 public class RocketSpawner : MonoBehaviour {
 
     public GameObject Target;
-    public KeyCode FireRocketKey;
-	
-	// Update is called once per frame
-	void Update () {
-		if(Input.GetKeyUp(FireRocketKey))
+    public KeyCode FireSimple = KeyCode.A;
+    public KeyCode ChangeRockeType = KeyCode.Tab;
+
+    public RocketType rocketType;
+
+    // Update is called once per frame
+    void Update () {
+		if(Input.GetKeyUp(FireSimple))
         {
             Debug.Log("Spawn rocket request...");
-            Spawn(RocketType.Simple);
+            Spawn(rocketType);
+        }
+
+        if (Input.GetKeyUp(ChangeRockeType))
+        {
+            if(rocketType == RocketType.Simple)
+            {
+                rocketType = RocketType.Guided;
+            }
+            else
+            {
+                rocketType = RocketType.Simple;
+            }
+
+            Debug.Log("Now Spawning: " + rocketType.ToString());
         }
     }
 
