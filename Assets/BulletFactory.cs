@@ -38,16 +38,16 @@ public class BulletFactory : MonoBehaviour
 
     public static GameObject CreateBullet(BulletType type)
     {
-        var rocket = Instance.factory[type].GetObject();
+        var bullet = Instance.factory[type].GetObject();
 
-        if (rocket == null)
+        if (bullet == null)
         {
-            rocket = Instantiate(Instance.RocketPrefabs[0], Instance.graveyardPosition, Quaternion.identity);
-            Instance.factory[type].Add(rocket);
+            bullet = Instantiate(Instance.RocketPrefabs[0], Instance.graveyardPosition, Quaternion.identity);
+            Instance.factory[type].Add(bullet);
         }
 
-        rocket.SetActive(true);
-        return rocket;
+        bullet.SetActive(true);
+        return bullet;
     }
 
     public static void DestroyBullet(GameObject bullet)
