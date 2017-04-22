@@ -9,7 +9,7 @@ public class Bullet : MonoBehaviour {
         Debug.Log("Trigger!!! " + other.gameObject.tag);
         if (other.gameObject.tag == "Projectile")
         {
-            RocketFactory.Instance.DestroyRocket(other.gameObject);
+            RocketFactory.DestroyRocket(other.gameObject);
         }
     }
 }
