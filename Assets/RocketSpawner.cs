@@ -5,6 +5,10 @@ using UnityEngine;
 public class RocketSpawner : MonoBehaviour {
 
     public List<GameObject> rocketList;
+    public GameObject Target;
+
+    public float speed = 20f;
+
 	// Use this for initialization
 	void Start () {
         rocketList = new List<GameObject>();
@@ -23,6 +27,12 @@ public class RocketSpawner : MonoBehaviour {
     {
         var rocket = RocketFactory.Instance.CreateRocket();
         rocketList.Add(rocket);
+
+        var rb = rocket.GetComponent<Rigidbody>();
+
+        rocket.transform.position = gameObject.transform.position;
+        rb.velocity = (Target.transform.position - transform.position).normalized * speed;
+        //rb.velocity.y = 0;
         Debug.Log("Rocket Spaned!!!!");
     }
 }
