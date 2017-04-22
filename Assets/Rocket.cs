@@ -33,7 +33,6 @@ public class Rocket : MonoBehaviour {
 
     private void FixedUpdate()
     {
-
         if(rocketType == RocketType.Guided)
         {
             rb.velocity = (Target.transform.position - transform.position).normalized * speed;

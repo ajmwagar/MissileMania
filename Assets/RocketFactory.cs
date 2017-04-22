@@ -30,8 +30,8 @@ public class RocketFactory : MonoBehaviour {
 
             factory = new Dictionary<RocketType, GameObjectFactory>();
 
-            factory.Add(RocketType.Simple, new GameObjectFactory("simple"));
-            factory.Add(RocketType.Guided, new GameObjectFactory("guided"));
+            factory.Add(RocketType.Simple, new GameObjectFactory("rocket_simple"));
+            factory.Add(RocketType.Guided, new GameObjectFactory("rocket_guided"));
 
             graveyardPosition = new Vector3(0, -2000, 0);
         }
