@@ -10,11 +10,11 @@ public class RocketFactory : MonoBehaviour {
 
     public bool debug;
     private static object _lock = new object();
-    public int poolSize = 0;
 
     public Vector3 graveyardPosition;
-    public GameObject[] Prefabs;
+    public GameObject[] RocketPrefabs;
 
+    private int poolSize = 0;
     private List<GameObject> objectPool;
     private List<bool> isObjectInUse;
 
@@ -48,7 +48,7 @@ public class RocketFactory : MonoBehaviour {
                 }
             }
 
-            var rocket = Instantiate(Prefabs[0], Vector3.zero, Quaternion.identity);
+            var rocket = Instantiate(RocketPrefabs[0], Vector3.zero, Quaternion.identity);
             rocket.name = "rocket_" + poolSize;
 
             isObjectInUse.Add(true);
@@ -62,17 +62,17 @@ public class RocketFactory : MonoBehaviour {
         }
     }
 
-    public void DestroyRocket(GameObject obj)
+    public void DestroyRocket(GameObject rocket)
     {
         lock(_lock)
         {
-            LogMsg("Rocket destroyed: " + obj.name);
-            obj.SetActive(false);
-            obj.transform.position = graveyardPosition;
+            LogMsg("Rocket destroyed: " + rocket.name);
+            rocket.SetActive(false);
+            rocket.transform.position = graveyardPosition;
 
             for (int i = 0; i < poolSize; i++)
             {
-                if (objectPool[i].name == obj.name)
+                if (objectPool[i].name == rocket.name)
                 {
                     isObjectInUse[i] = false;
                     return;
@@ -80,7 +80,6 @@ public class RocketFactory : MonoBehaviour {
             }
         }
     }
-
 
     private void LogMsg(string msg)
     {
