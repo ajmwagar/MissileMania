@@ -21,7 +21,7 @@ public class RocketSpawner : MonoBehaviour {
 
     public void Spawn()
     {
-        var rocket = RocketFactory.Instance.GetRocket();
+        var rocket = RocketFactory.Instance.CreateRocket();
         rocketList.Add(rocket);
         Debug.Log("Rocket Spaned!!!!");
     }

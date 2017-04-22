@@ -8,9 +8,11 @@ public class RocketFactory : MonoBehaviour {
 
     public static RocketFactory Instance { get { return _instance; } }
 
+    public bool debug;
     private static object _lock = new object();
     public int poolSize = 0;
 
+    public Vector3 graveyardPosition;
     public GameObject[] Prefabs;
 
     private List<GameObject> objectPool;
@@ -24,13 +26,14 @@ public class RocketFactory : MonoBehaviour {
         }
         else
         {
+            graveyardPosition = new Vector3(0, -2000, 0);
             _instance = this;
             objectPool = new List<GameObject>();
             isObjectInUse = new List<bool>();
         }
     }
 
-    public GameObject GetRocket()
+    public GameObject CreateRocket()
     {
         lock (_lock)
         {
@@ -38,6 +41,7 @@ public class RocketFactory : MonoBehaviour {
             {
                 if (!isObjectInUse[i])
                 {
+                    LogMsg("Rocket reused: " + objectPool[i].name);
                     isObjectInUse[i] = true;
                     objectPool[i].SetActive(true);
                     return objectPool[i];
@@ -52,6 +56,8 @@ public class RocketFactory : MonoBehaviour {
 
             poolSize++;
 
+            LogMsg("Rocket created: " + rocket.name);
+
             return rocket;
         }
     }
@@ -60,7 +66,9 @@ public class RocketFactory : MonoBehaviour {
     {
         lock(_lock)
         {
+            LogMsg("Rocket destroyed: " + obj.name);
             obj.SetActive(false);
+            obj.transform.position = graveyardPosition;
 
             for (int i = 0; i < poolSize; i++)
             {
@@ -71,5 +79,16 @@ public class RocketFactory : MonoBehaviour {
                 }
             }
         }
+    }
+
+
+    private void LogMsg(string msg)
+    {
+        if(!debug)
+        {
+            return;
+        }
+
+        Debug.Log(msg);
     }
 }
