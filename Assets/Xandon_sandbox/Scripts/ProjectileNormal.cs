@@ -15,7 +15,7 @@ public class ProjectileNormal : ProjectileBase{
 	// Update is called once per frame
 	void Update () {
 		if (m_fired) {
-			transform.position += m_direction * (speed * 2 * Time.deltaTime);
+			transform.position += m_direction * (speed * Time.deltaTime);
 		}
 	}
 
