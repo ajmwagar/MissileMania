@@ -22,7 +22,9 @@
 
         private void FireBullet()
         {
-            GameObject bulletClone = Instantiate(bullet, bullet.transform.position, bullet.transform.rotation) as GameObject;
+            GameObject bulletClone = BulletFactory.CreateBullet(); // Instantiate(bullet, bullet.transform.position, bullet.transform.rotation) as GameObject;
+            bulletClone.transform.position = bullet.transform.position;
+            bulletClone.transform.rotation = bullet.transform.rotation;
             bulletClone.SetActive(true);
             Rigidbody rb = bulletClone.GetComponent<Rigidbody>();
             rb.AddForce(-bullet.transform.forward * bulletSpeed);

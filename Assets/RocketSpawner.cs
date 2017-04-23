@@ -24,7 +24,7 @@ public class RocketSpawner : MonoBehaviour {
         FrameCount += 1;
         if (Input.GetKeyDown(FireSimple))
         {
-            Debug.Log("Spawn rocket request...");
+            //Debug.Log("Spawn rocket request...");
             Spawn(rocketType);
 
         }
@@ -40,7 +40,7 @@ public class RocketSpawner : MonoBehaviour {
                 rocketType = RocketType.Simple;
             }
 
-            Debug.Log("Now Spawning: " + rocketType.ToString());
+            //Debug.Log("Now Spawning: " + rocketType.ToString());
         }
     }
 
@@ -50,6 +50,6 @@ public class RocketSpawner : MonoBehaviour {
         rocket.transform.position = gameObject.transform.position;
         rocket.GetComponent<Rocket>().Initialize(type, Target);
         audioSource.PlayOneShot(SoundFX.MissileLaunch);
-        Debug.Log("Rocket Spaned!!!!");
+        //Debug.Log("Rocket Spaned!!!!");
     }
 }
