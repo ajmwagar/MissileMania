@@ -62,3 +62,7 @@ MonoBehaviour:
   smallTurretStay: {fileID: 8300000, guid: 76a62282847dd284d92ef073c4a4c95b, type: 3}
   batHitFx: {fileID: 8300000, guid: f8d77667449c05947ae7a4411a3ed090, type: 3}
   powerToolFx: {fileID: 8300000, guid: ab0273e00b4cae44499a674245abdc47, type: 3}
+  shieldActive: {fileID: 8300000, guid: f518a6dfc4a67be4f8e0b037248c9c9f, type: 3}
+  shieldUp: {fileID: 8300000, guid: 5accb69330dc6b447b49a4088f6107e0, type: 3}
+  shieldDown: {fileID: 8300000, guid: 5e9eac5743f6a57429e469e88f5d8169, type: 3}
+  shieldDamaged: {fileID: 8300000, guid: 4b3262e280751d1409fefe0089bc8668, type: 3}
