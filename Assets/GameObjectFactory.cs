@@ -10,6 +10,8 @@ public class GameObjectFactory {
     private List<GameObject> objectPool;
     private List<bool> isObjectInUse;
 
+    private Queue<int> queue = new Queue<int>();
+
     private static object _lock = new object();
 
     private string prefix;
@@ -21,7 +23,7 @@ public class GameObjectFactory {
         isObjectInUse = new List<bool>();
     }
 
-    public GameObject GetObject()
+    public GameObject GetObject_BAK()
     {
         lock (_lock)
         {
@@ -39,7 +41,7 @@ public class GameObjectFactory {
         }
     }
 
-    public void DestroyObject(GameObject obj)
+    public void DestroyObject_BAK(GameObject obj)
     {
         lock (_lock)
         {
@@ -62,10 +64,41 @@ public class GameObjectFactory {
         {
             obj.name = prefix + "_" + poolSize;
 
-            isObjectInUse.Add(true);
+            //isObjectInUse.Add(true);
             objectPool.Add(obj);
 
             poolSize++;
+        }
+    }
+
+    private GameObject GetObject()
+    {
+        lock (_lock)
+        {
+            if (queue.Count == 0)
+            {
+                return null;
+            }
+
+            return objectPool[queue.Dequeue()];
+        }
+    }
+
+    public void DestroyObject(GameObject obj)
+    {
+        lock (_lock)
+        {
+            var name = obj.name;
+            var number = int.Parse(name.Replace(prefix + "_", ""));
+            queue.Enqueue(number);
+        }
+    }
+
+    public int ActiveObjects()
+    {
+        lock (_lock)
+        {
+            return poolSize - queue.Count;
         }
     }
 }
