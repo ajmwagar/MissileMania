@@ -19,8 +19,12 @@ public class SoundFX : MonoBehaviour {
     public AudioClip smallTurretStay;
 
     public AudioClip batHitFx;
-
     public AudioClip powerToolFx;
+
+    public AudioClip shieldActive;
+    public AudioClip shieldUp;
+    public AudioClip shieldDown;
+    public AudioClip shieldDamaged;
 
     public static AudioClip MissileLaunch { get { return Instance.missileLaunch; } }
     public static AudioClip MissileTravel { get { return Instance.missileTravel; } }
@@ -36,6 +40,11 @@ public class SoundFX : MonoBehaviour {
 
     public static AudioClip BatHitFx { get { return Instance.batHitFx; } }
     public static AudioClip PowerToolFx { get { return Instance.powerToolFx; } }
+
+    public AudioClip ShieldActive { get { return Instance.shieldActive; } }
+    public AudioClip ShieldUp { get { return Instance.shieldUp; } }
+    public AudioClip ShieldDown { get { return Instance.shieldDown; } }
+    public AudioClip ShieldDamaged { get { return Instance.shieldDamaged; } }
 
 
     private void Awake()
