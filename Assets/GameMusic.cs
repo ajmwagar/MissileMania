@@ -28,15 +28,17 @@ public class GameMusic : MonoBehaviour
         GameMusicLevels[0].Play();
     }
 
-    public static void SetGameMusicLevel(int level)
+    public void SetGameMusicLevel(int activeRocketCount)
     {
-        if (level < 0)
+        currentLevel = activeRocketCount / 10;
+
+        if (currentLevel < 1)
         {
-            level = 0;
+            currentLevel = 1;
         }
-        else if (level >= Instance.GameMusicLevels.Length)
+        else if (currentLevel >= Instance.GameMusicLevels.Length)
         {
-            level = Instance.GameMusicLevels.Length - 1;
+            currentLevel = Instance.GameMusicLevels.Length - 1;
         }
     }
 
@@ -45,6 +47,7 @@ public class GameMusic : MonoBehaviour
 
     public void Update()
     {
+        SetGameMusicLevel(RocketFactory.GetActiveRocketCount());
 
         if (currentLevel == 0)
         {

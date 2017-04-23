@@ -20,7 +20,7 @@ public class BatWeapon : MonoBehaviour {
     {
         if (collision.gameObject.tag == "Enemy")
         {
-            Debug.Log("Collided with projectile");
+            //Debug.Log("Collided with projectile");
 
             // reverse rocket direction
             // set explosion time

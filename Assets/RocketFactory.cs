@@ -34,6 +34,8 @@ public class RocketFactory : MonoBehaviour {
 
             factory.Add(RocketType.Simple, new GameObjectFactory("rocket_simple"));
             factory.Add(RocketType.Guided, new GameObjectFactory("rocket_guided"));
+            factory.Add(RocketType.HitByBat, new GameObjectFactory("rocket_hitbybat"));
+            factory.Add(RocketType.HitByOther, new GameObjectFactory("rocket_hitbyother"));
 
             graveyardPosition = new Vector3(0, -2000, 0);
         }
@@ -55,9 +57,14 @@ public class RocketFactory : MonoBehaviour {
 
     public static void DestroyRocket(GameObject rocket)
     {
-        var type = rocket.GetComponent<Rocket>().rocketType;
+        var type = rocket.GetComponent<Rocket>().initialRocketType;
         rocket.SetActive(false);
         rocket.transform.position = Instance.graveyardPosition;
         Instance.factory[type].DestroyObject(rocket);
+    }
+
+    public static int GetActiveRocketCount()
+    {
+        return Instance.factory[RocketType.Simple].ActiveObjects();
     }
 }

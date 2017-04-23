@@ -19,7 +19,8 @@ public class Player : MonoBehaviour {
         //Debug.Log("Trigger!!! " + other.gameObject.tag);
         if (other.gameObject.tag == "Enemy")
         {
-            RocketFactory.DestroyRocket(other.gameObject);
+            other.gameObject.GetComponent<Rocket>().HitByOther();
+            //RocketFactory.DestroyRocket(other.gameObject);
         }
     }
 }

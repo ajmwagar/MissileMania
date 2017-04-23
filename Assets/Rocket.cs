@@ -16,6 +16,7 @@ public class Rocket : MonoBehaviour {
     public float destroyInSec;
     public GameObject BoomStick;
     public AudioSource audioSource;
+    public RocketType initialRocketType;
 
     private void Awake()
     {
@@ -31,6 +32,7 @@ public class Rocket : MonoBehaviour {
 
     public void Initialize(RocketType type, GameObject target)
     {
+        initialRocketType = type;
         rocketType = type;
         Target = target;
 
@@ -50,7 +52,7 @@ public class Rocket : MonoBehaviour {
     public void DexplodeRocket()
     {
         BoomStick.SetActive(false);
-        Debug.Log("UnBoom?");
+        //Debug.Log("UnBoom?");
     }
     public void HitByBat()
     {
@@ -69,7 +71,7 @@ public class Rocket : MonoBehaviour {
 
         rb.velocity = rb.velocity * -2;
 
-        explodeInSec = 0f;
+        explodeInSec = 3f;
         destroyInSec = 5 + explodeInSec;
     }
     private void FixedUpdate()

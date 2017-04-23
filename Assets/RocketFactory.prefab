@@ -51,6 +51,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: bf4090f6d1da6874c8cd64e29af63a0e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  graveyardPosition: {x: 0, y: -2000, z: 0}
+  graveyardPosition: {x: 2000, y: 10000, z: 0}
   RocketPrefabs:
-  - {fileID: 1107836862373370, guid: d98f0a13c3fbfad4da00490a7aa2e010, type: 2}
+  - {fileID: 0}

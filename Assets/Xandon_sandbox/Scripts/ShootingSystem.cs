@@ -14,7 +14,7 @@ public class ShootingSystem : MonoBehaviour {
 
 	List<GameObject> m_lastProjectiles = new List<GameObject>();
 	float m_fireTimer = 0.0f;
-	GameObject m_target;
+	public GameObject m_target;
 
     public void Awake()
     {
