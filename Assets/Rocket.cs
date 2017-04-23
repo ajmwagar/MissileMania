@@ -33,6 +33,7 @@ public class Rocket : MonoBehaviour {
         Target = target;
 
         rb.velocity = (Target.transform.position - transform.position).normalized * speed;
+        transform.rotation = Quaternion.LookRotation(rb.velocity) * Quaternion.Euler(rocketRotation);
     }
     public void explodeRocket()
     {
