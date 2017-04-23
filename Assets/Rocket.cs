@@ -106,20 +106,20 @@ public class Rocket : MonoBehaviour {
         }
         
     }
-    public void OnCollisionEnter(Collision collision)
-    {
-        if (!collision.gameObject.CompareTag("Enemy") && !collision.gameObject.CompareTag("Bat"))
-        {
-            Debug.Log("Collided with projectile");
+    //public void OnCollisionEnter(Collision collision)
+    //{
+    //    if (!collision.gameObject.CompareTag("Enemy") && !collision.gameObject.CompareTag("Bat"))
+    //    {
+    //        Debug.Log("Collided with projectile");
 
-            // reverse rocket direction
-            // set explosion time
-            collision.gameObject.GetComponent<Rocket>().HitByOther();
+    //        // reverse rocket direction
+    //        // set explosion time
+    //        collision.gameObject.GetComponent<Rocket>().HitByOther();
 
-            audioSource.PlayOneShot(SoundFX.BatHitFx);
-            audioSource.pitch = Random.Range(0.8f, 1.2f);
-            audioSource.volume = audioSource.volume * Random.Range(0.6f, 1f);
-            //RocketFactory.DestroyRocket(collision.gameObject);
-        }
-    }
+    //        audioSource.PlayOneShot(SoundFX.BatHitFx);
+    //        audioSource.pitch = Random.Range(0.8f, 1.2f);
+    //        audioSource.volume = audioSource.volume * Random.Range(0.6f, 1f);
+    //        //RocketFactory.DestroyRocket(collision.gameObject);
+    //    }
+    //}
 }
