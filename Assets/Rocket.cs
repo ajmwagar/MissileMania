@@ -16,7 +16,6 @@ public class Rocket : MonoBehaviour {
     public float destroyInSec;
     public GameObject BoomStick;
     public AudioSource audioSource;
-    public AudioSource audioSourceLoop;
 
     private void Awake()
     {
@@ -38,16 +37,14 @@ public class Rocket : MonoBehaviour {
         rb.velocity = (Target.transform.position - transform.position).normalized * speed;
         transform.rotation = Quaternion.LookRotation(rb.velocity) * Quaternion.Euler(rocketRotation);
 
-        audioSource.PlayOneShot(SoundFX.MissileLaunch);
-        audioSourceLoop.clip = SoundFX.MissileTravel;
-        audioSourceLoop.loop = true;
-        audioSourceLoop.PlayDelayed(.22f);
+        audioSource.clip = SoundFX.MissileTravel;
+        audioSource.loop = true;
+        audioSource.Play();
     }
     public void explodeRocket()
     {
         BoomStick.SetActive(true);
         Debug.Log("Boom?");
-        audioSourceLoop.Stop();
         audioSource.PlayOneShot(SoundFX.MissileExplosion);
     }
     public void DexplodeRocket()

@@ -22,7 +22,10 @@ public class ShieldUp : MonoBehaviour {
 
     private void Awake()
     {
-        audioSource = gameObject.GetComponent<AudioSource>();    
+        audioSource = gameObject.GetComponent<AudioSource>();
+        audioSourceLoop = gameObject.AddComponent<AudioSource>();
+        audioSourceLoop.loop = true;
+        audioSourceLoop.clip = SoundFX.ShieldActive;
     }
 
     private void Start()
@@ -61,10 +64,7 @@ public class ShieldUp : MonoBehaviour {
             Shieldup = true;
             ShieldBall.SetActive(true);
             audioSource.PlayOneShot(SoundFX.ShieldUp);
-            audioSourceLoop.clip = SoundFX.ShieldActive;
-            audioSourceLoop.loop = true;
             audioSourceLoop.PlayDelayed(1.15f);
-
         }
         if (Shieldup && !isGrounded)
         {
