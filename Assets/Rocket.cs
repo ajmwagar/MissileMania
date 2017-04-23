@@ -12,6 +12,8 @@ public class Rocket : MonoBehaviour {
     public RocketType rocketType;
     public Vector3 rocketRotation;
     public float explodeInSec;
+    public float destroyInSec;
+    public GameObject BoomStick;
 
     private void Awake()
     {
@@ -32,7 +34,16 @@ public class Rocket : MonoBehaviour {
 
         rb.velocity = (Target.transform.position - transform.position).normalized * speed;
     }
-
+    public void explodeRocket()
+    {
+      //  BoomStick.SetActive(true);
+        Debug.Log("Boom?");
+    }
+    public void DexplodeRocket()
+    {
+        // BoomStick.SetActive(false);
+        Debug.Log("UnBoom?");
+    }
     public void HitByBat()
     {
         Target = null;
@@ -41,6 +52,7 @@ public class Rocket : MonoBehaviour {
         rb.velocity = rb.velocity * -2;
         
         explodeInSec = 3f;
+        destroyInSec = 5 + explodeInSec;
     }
 
     private void FixedUpdate()
@@ -57,9 +69,20 @@ public class Rocket : MonoBehaviour {
             rb.rotation = rot;
 
             explodeInSec -= Time.fixedDeltaTime;
-            if(explodeInSec < 0)
+            destroyInSec -= Time.fixedDeltaTime;
+            if (explodeInSec < 0)
+            {
+                explodeRocket();
+                Debug.Log("Exploded!");
+                explodeInSec = 1000;
+            }
+
+            if(destroyInSec < 0)
             {
                 RocketFactory.DestroyRocket(gameObject);
+                DexplodeRocket();
+                Debug.Log("Dexploded!");
+                destroyInSec = 1000;
             }
         }
         
