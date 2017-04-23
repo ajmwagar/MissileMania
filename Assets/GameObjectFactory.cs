@@ -71,7 +71,7 @@ public class GameObjectFactory {
         }
     }
 
-    private GameObject GetObject()
+    public GameObject GetObject()
     {
         lock (_lock)
         {
