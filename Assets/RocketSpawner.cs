@@ -10,6 +10,13 @@ public class RocketSpawner : MonoBehaviour {
 
     public RocketType rocketType;
 
+    public AudioSource audioSource;
+
+    public void Awake()
+    {
+        audioSource = gameObject.GetComponent<AudioSource>();
+    }
+
     // Update is called once per frame
     void Update () {
 		if(Input.GetKeyUp(FireSimple))
@@ -38,8 +45,7 @@ public class RocketSpawner : MonoBehaviour {
         var rocket = RocketFactory.CreateRocket(type);
         rocket.transform.position = gameObject.transform.position;
         rocket.GetComponent<Rocket>().Initialize(type, Target);
-
-        //rb.velocity.y = 0;
+        audioSource.PlayOneShot(SoundFX.MissileLaunch);
         Debug.Log("Rocket Spaned!!!!");
     }
 }
