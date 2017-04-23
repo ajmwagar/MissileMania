@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 
+[RequireComponent(typeof(AudioSource))]
 public class ShieldUp : MonoBehaviour {
 
 
@@ -16,8 +17,12 @@ public class ShieldUp : MonoBehaviour {
     public bool Shieldup;
     public GameObject ShieldBall;
 
+    public AudioSource audioSource;
 
-
+    private void Awake()
+    {
+        audioSource = gameObject.GetComponent<AudioSource>();    
+    }
 
     private void Start()
     {
@@ -26,40 +31,42 @@ public class ShieldUp : MonoBehaviour {
    
     private void IsGrounded()
     {   
+        if (gameObject.transform.position.y >= 0)
         {
-            if (gameObject.transform.position.y >= 0){
-                foreach (Transform point in GroundPoints)
+            foreach (Transform point in GroundPoints)
+            {
+                Collider[] colliders = Physics.OverlapSphere(point.position, GroundRadius, whatIsGround);
+                for (int i = 0; i < colliders.Length; i++)
                 {
-                    Collider[] colliders = Physics.OverlapSphere(point.position, GroundRadius, whatIsGround);
-                    for (int i = 0; i < colliders.Length; i++)
+                    if (colliders[i].gameObject != gameObject)
                     {
-                        if (colliders[i].gameObject != gameObject)
-                        {
-                            isGrounded = true;
-                            return;
-                        }
+                        isGrounded = true;
+                        return;
                     }
                 }
             }
-            isGrounded = false;
         }
-
+        isGrounded = false;
     }
     public void FixedUpdate()
     {
         IsGrounded();
     }
+
     public void Update()
     {
         if (isGrounded && !Shieldup)
         {
             Shieldup = true;
             ShieldBall.SetActive(true);
+            audioSource.PlayOneShot(SoundFX.ShieldUp);
+
         }
         if (Shieldup && !isGrounded)
         {
             Shieldup = false;
             ShieldBall.SetActive(false);
+            audioSource.PlayOneShot(SoundFX.ShieldDown);
         }
         
     }
