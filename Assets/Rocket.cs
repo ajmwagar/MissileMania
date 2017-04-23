@@ -44,7 +44,7 @@ public class Rocket : MonoBehaviour {
     public void explodeRocket()
     {
         BoomStick.SetActive(true);
-        Debug.Log("Boom?");
+        //Debug.Log("Boom?");
         audioSource.PlayOneShot(SoundFX.MissileExplosion);
     }
     public void DexplodeRocket()
@@ -108,7 +108,7 @@ public class Rocket : MonoBehaviour {
     }
     public void OnCollisionEnter(Collision collision)
     {
-        if (collision.gameObject.tag != "Enemy" && collision.gameObject.tag != "Bat")
+        if (!collision.gameObject.CompareTag("Enemy") && !collision.gameObject.CompareTag("Bat"))
         {
             Debug.Log("Collided with projectile");
 
