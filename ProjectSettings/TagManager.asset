@@ -8,6 +8,8 @@ TagManager:
   - Projectile
   - Bat
   - Enemy
+  - UndefinedTracker
+  - FxTemporaire
   layers:
   - Default
   - TransparentFX
