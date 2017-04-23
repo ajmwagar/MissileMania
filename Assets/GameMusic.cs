@@ -25,7 +25,7 @@ public class GameMusic : MonoBehaviour
 
     private void Start()
     {
-        for (int i = 0; i < GameMusicLevels.Length - 1; i++)
+        for (int i = 0; i < GameMusicLevels.Length; i++)
         {
             GameMusicLevels[i].Play();
             if (i > 0) { GameMusicLevels[i].mute = true; }
@@ -55,12 +55,14 @@ public class GameMusic : MonoBehaviour
         }
 
         // do turn on/off correct music level at the beginning of the music loop
-        for (int i = 1; i < GameMusicLevels.Length -1; i++)
+        for (int i = 1; i < GameMusicLevels.Length; i++)
         {
             if(i <= currentLevel)
             {
-                if (GameMusicLevels[i].mute) { GameMusicLevels[i].mute = false; }
-                GameMusicLevels[i].time = GameMusicLevels[0].time;
+                if (GameMusicLevels[i].mute) {
+                    GameMusicLevels[i].mute = false;
+                    GameMusicLevels[i].time = GameMusicLevels[0].time;
+                }
             }
             else
             {
