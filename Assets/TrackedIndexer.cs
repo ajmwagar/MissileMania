@@ -20,6 +20,10 @@ public class TrackedIndexer : MonoBehaviour {
             TrackedTurret.index = SteamVR_TrackedObject.EIndex.None;
             TrackedShield.index = SteamVR_TrackedObject.EIndex.None;
 
+            BatTroller.gameObject.SetActive(false);
+            TrackedTurret.gameObject.SetActive(false);
+            TrackedShield.gameObject.SetActive(false);
+
             UndefinedTrackers.SetActive(true);
         } else
         {
@@ -44,6 +48,7 @@ public class TrackedIndexer : MonoBehaviour {
             {
                 case 3:
                     Debug.Log("Setting bat to: " + trackedObjectIndex);
+                    BatTroller.gameObject.SetActive(true);
                     BatTroller.index = trackedObjectIndex;
                     trackedObject.SetActive(false);
                     IndexerText.text = "Place Turret";
@@ -51,6 +56,7 @@ public class TrackedIndexer : MonoBehaviour {
                     break;
                 case 4:
                     Debug.Log("Setting turret to: " + trackedObjectIndex);
+                    TrackedTurret.gameObject.SetActive(true);
                     TrackedTurret.index = trackedObjectIndex;
                     trackedObject.SetActive(false);
                     IndexerText.text = "Place Shield";
@@ -58,6 +64,7 @@ public class TrackedIndexer : MonoBehaviour {
                     break;
                 case 5:
                     Debug.Log("Setting shield to: " + trackedObjectIndex);
+                    TrackedShield.gameObject.SetActive(true);
                     TrackedShield.index = trackedObjectIndex;
                     trackedObject.SetActive(false);
                     gameObject.SetActive(false);

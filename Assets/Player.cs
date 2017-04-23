@@ -16,7 +16,7 @@ public class Player : MonoBehaviour {
 
     private void OnTriggerEnter(Collider other)
     {
-        Debug.Log("Trigger!!! " + other.gameObject.tag);
+        //Debug.Log("Trigger!!! " + other.gameObject.tag);
         if (other.gameObject.tag == "Enemy")
         {
             RocketFactory.DestroyRocket(other.gameObject);
