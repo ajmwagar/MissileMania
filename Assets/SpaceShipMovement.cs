@@ -4,8 +4,11 @@ using UnityEngine;
 
 public class SpaceShipMovement : MonoBehaviour {
 
-	// Use this for initialization
-	void Start () {
+    public float radiusDecreaseRate;
+    public float moveSpeed;
+
+    // Use this for initialization
+    void Start () {
 		
 	}
 	
