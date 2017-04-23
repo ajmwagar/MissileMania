@@ -5,13 +5,14 @@ using UnityEngine;
 [RequireComponent(typeof(AudioSource))]
 public class BatWeapon : MonoBehaviour {
     public AudioSource audioSource;
+
     private void Awake()
     {
         audioSource = gameObject.GetComponent<AudioSource>();
     }
+
     public void OnCollisionEnter(Collision collision)
     {
-        Debug.Log("Collided with projectile");
         if (collision.gameObject.tag == "Enemy")
         {
             Debug.Log("Collided with projectile");
