@@ -11,6 +11,7 @@ public class Rocket : MonoBehaviour {
     public Rigidbody rb;
     public RocketType rocketType;
     public Vector3 rocketRotation;
+    public float explodeInSec;
 
     private void Awake()
     {
@@ -32,13 +33,35 @@ public class Rocket : MonoBehaviour {
         rb.velocity = (Target.transform.position - transform.position).normalized * speed;
     }
 
+    public void HitByBat()
+    {
+        Target = null;
+        rocketType = RocketType.HitByBat;
+
+        rb.velocity = rb.velocity * -2;
+        
+        explodeInSec = 3f;
+    }
+
     private void FixedUpdate()
     {
         if(rocketType == RocketType.Guided)
         {
             rb.velocity = (Target.transform.position - transform.position).normalized * speed;
+            transform.rotation = Quaternion.LookRotation(rb.velocity) * Quaternion.Euler(rocketRotation);
+        }
+        else if(rocketType == RocketType.HitByBat)
+        {
+            var rot = rb.rotation;
+            rot.z += 100 * Time.fixedDeltaTime;
+            rb.rotation = rot;
+
+            explodeInSec -= Time.fixedDeltaTime;
+            if(explodeInSec < 0)
+            {
+                RocketFactory.DestroyRocket(gameObject);
+            }
         }
         
-        transform.rotation = Quaternion.LookRotation(rb.velocity) * Quaternion.Euler(rocketRotation);
     }
 }

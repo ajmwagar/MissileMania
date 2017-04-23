@@ -6,7 +6,8 @@ using UnityEngine;
 public enum RocketType
 {
     Simple = 0,
-    Guided = 1
+    Guided = 1,
+    HitByBat = 2
 }
 
 public class RocketFactory : MonoBehaviour {
