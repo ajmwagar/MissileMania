@@ -6,7 +6,7 @@ public class BatWeapon : MonoBehaviour {
 
     public void OnCollisionEnter(Collision collision)
     {
-        if (collision.gameObject.tag == "Projectile")
+        if (collision.gameObject.tag == "Enemy")
         {
             Debug.Log("Collided with projectile");
 

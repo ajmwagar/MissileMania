@@ -7,7 +7,7 @@ public class Bullet : MonoBehaviour {
     private void OnTriggerEnter(Collider other)
     {
         Debug.Log("Trigger!!! " + other.gameObject.tag);
-        if (other.gameObject.tag == "Projectile")
+        if (other.gameObject.tag == "Enemy")
         {
             RocketFactory.DestroyRocket(other.gameObject);
         }

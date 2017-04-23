@@ -7,6 +7,7 @@ public class RocketSpawner : MonoBehaviour {
     public GameObject Target;
     public KeyCode FireSimple = KeyCode.A;
     public KeyCode ChangeRockeType = KeyCode.Tab;
+    public int FrameCount = 0;
 
     public RocketType rocketType;
 
@@ -19,10 +20,13 @@ public class RocketSpawner : MonoBehaviour {
 
     // Update is called once per frame
     void Update () {
-		if(Input.GetKeyUp(FireSimple))
+
+        FrameCount += 1;
+        if (Input.GetKeyDown(FireSimple))
         {
             Debug.Log("Spawn rocket request...");
             Spawn(rocketType);
+
         }
 
         if (Input.GetKeyUp(ChangeRockeType))
