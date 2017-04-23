@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 
+[RequireComponent(typeof(AudioSource))]
 public class Rocket : MonoBehaviour {
 
     public KeyCode DestroyKey = KeyCode.Alpha1;
@@ -14,10 +15,11 @@ public class Rocket : MonoBehaviour {
     public float explodeInSec;
     public float destroyInSec;
     public GameObject BoomStick;
+    public AudioSource audioSource;
 
     private void Awake()
     {
-       rb = gameObject.GetComponent<Rigidbody>();
+        audioSource = gameObject.GetComponent<AudioSource>();
     }
     // Update is called once per frame
     void Update () {
@@ -34,11 +36,18 @@ public class Rocket : MonoBehaviour {
 
         rb.velocity = (Target.transform.position - transform.position).normalized * speed;
         transform.rotation = Quaternion.LookRotation(rb.velocity) * Quaternion.Euler(rocketRotation);
+
+        audioSource.clip = SoundFX.MissileTravel;
+        audioSource.loop = true;
+        audioSource.Play();
     }
     public void explodeRocket()
     {
       //  BoomStick.SetActive(true);
         Debug.Log("Boom?");
+        audioSource.loop = false;
+        audioSource.clip = null;
+        audioSource.PlayOneShot(SoundFX.MissileExplosion);
     }
     public void DexplodeRocket()
     {
@@ -65,6 +74,7 @@ public class Rocket : MonoBehaviour {
         }
         else if(rocketType == RocketType.HitByBat)
         {
+            audioSource.Stop();
             var rot = rb.rotation;
             rot.z += 100 * Time.fixedDeltaTime;
             rb.rotation = rot;
