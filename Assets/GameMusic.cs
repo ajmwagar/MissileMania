@@ -25,11 +25,7 @@ public class GameMusic : MonoBehaviour
 
     private void Start()
     {
-        for (int i = 0; i < GameMusicLevels.Length; i++)
-        {
-            GameMusicLevels[i].Play();
-            if (i > 0) { GameMusicLevels[i].mute = true; }
-        }
+        GameMusicLevels[0].Play();
     }
 
     public static void SetGameMusicLevel(int level)
@@ -59,14 +55,15 @@ public class GameMusic : MonoBehaviour
         {
             if(i <= currentLevel)
             {
-                if (GameMusicLevels[i].mute) {
-                    GameMusicLevels[i].mute = false;
+                if (!GameMusicLevels[i].isPlaying)
+                {
+                    GameMusicLevels[i].Play();
                     GameMusicLevels[i].time = GameMusicLevels[0].time;
                 }
             }
             else
             {
-                GameMusicLevels[i].mute = true;
+                GameMusicLevels[i].Stop();
             }
         }
     }
