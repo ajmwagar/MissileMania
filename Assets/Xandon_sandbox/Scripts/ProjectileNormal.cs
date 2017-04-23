@@ -15,7 +15,7 @@ public class ProjectileNormal : ProjectileBase{
 	// Update is called once per frame
 	void Update () {
 		if (m_fired) {
-			transform.position += m_direction * (speed * Time.deltaTime);
+			transform.position += m_direction * (speed * 2 * Time.deltaTime);
 		}
 	}
 
@@ -27,7 +27,7 @@ public class ProjectileNormal : ProjectileBase{
 			m_target = target;
 			m_damage = damage;
 
-			Destroy(gameObject, 10.0f);
+			Invoke ("DestroyProjectile", 10.0f);
 		}
 	}
 
@@ -47,7 +47,12 @@ public class ProjectileNormal : ProjectileBase{
 		}
 
 		if(other.gameObject.GetComponent<ProjectileBase>() == null)
-			Destroy(gameObject);
+			DestroyProjectile();
+	}
+
+	public void DestroyProjectile()
+	{
+		BulletFactory.DestroyBullet (gameObject);
 	}
 }
 

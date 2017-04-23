@@ -60,7 +60,10 @@ public class ShootingSystem : MonoBehaviour {
 
 		for(int i = 0; i < projectileSpawns.Count; i++){
 			if(projectileSpawns[i]){
-				GameObject proj = Instantiate(projectile, projectileSpawns[i].transform.position, Quaternion.Euler(projectileSpawns[i].transform.forward)) as GameObject;
+				GameObject proj = BulletFactory.CreateBullet ();
+				proj.transform.position = projectileSpawns [i].transform.position;
+				proj.transform.rotation = Quaternion.Euler(projectileSpawns[i].transform.forward);
+			    //GameObject proj = Instantiate(projectile, projectileSpawns[i].transform.position, Quaternion.Euler(projectileSpawns[i].transform.forward)) as GameObject;
 				proj.GetComponent<ProjectileBase>().FireProjectile(projectileSpawns[i], m_target, damage, fireRate);
 
 				m_lastProjectiles.Add(proj);
@@ -75,7 +78,8 @@ public class ShootingSystem : MonoBehaviour {
 	void RemoveLastProjectiles()
 	{
 		while(m_lastProjectiles.Count > 0){
-			Destroy(m_lastProjectiles[0]);
+			BulletFactory.DestroyBullet(m_lastProjectiles[0]);
+			//Destroy(m_lastProjectiles[0]);
 			m_lastProjectiles.RemoveAt(0);
 		}
 	}
