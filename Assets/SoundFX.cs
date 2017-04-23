@@ -38,11 +38,6 @@ public class SoundFX : MonoBehaviour {
     public static AudioClip PowerToolFx { get { return Instance.powerToolFx; } }
 
 
-    public static void SetGameMusicLevel(int level)
-    {
-
-    }
-
     private void Awake()
     {
         if (_instance != null && _instance != this)
