@@ -8,7 +8,7 @@ public class GameMusic : MonoBehaviour
     private static GameMusic _instance;
     private static GameMusic Instance { get { return _instance; } }
 
-    [Range(0.5f, 1f)]
+    [Range(0.01f, 1f)]
     public float StartPlayingAtSec;
 
     private void Awake()
@@ -25,7 +25,11 @@ public class GameMusic : MonoBehaviour
 
     private void Start()
     {
-        GameMusicLevels[0].Play();
+        for (int i = 0; i < GameMusicLevels.Length - 1; i++)
+        {
+            GameMusicLevels[i].Play();
+            if (i > 0) { GameMusicLevels[i].mute = true; }
+        }
     }
 
     public static void SetGameMusicLevel(int level)
@@ -55,12 +59,12 @@ public class GameMusic : MonoBehaviour
         {
             if(i <= currentLevel)
             {
-                GameMusicLevels[i].Play();
+                if (GameMusicLevels[i].mute) { GameMusicLevels[i].mute = false; }
                 GameMusicLevels[i].time = GameMusicLevels[0].time;
             }
             else
             {
-                GameMusicLevels[i].Stop();
+                GameMusicLevels[i].mute = true;
             }
         }
     }
