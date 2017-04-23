@@ -25,12 +25,13 @@ public class ShieldUp : MonoBehaviour {
         audioSource = gameObject.GetComponent<AudioSource>();
         audioSourceLoop = gameObject.AddComponent<AudioSource>();
         audioSourceLoop.loop = true;
-        audioSourceLoop.clip = SoundFX.ShieldActive;
+        
     }
 
     private void Start()
     {
         myRidgidBody = GetComponent<Rigidbody>();
+        audioSourceLoop.clip = SoundFX.ShieldActive;
     }
    
     private void IsGrounded()
