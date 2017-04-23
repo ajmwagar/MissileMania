@@ -62,4 +62,9 @@ public class RocketFactory : MonoBehaviour {
         rocket.transform.position = Instance.graveyardPosition;
         Instance.factory[type].DestroyObject(rocket);
     }
+
+    public static int GetActiveRocketCount()
+    {
+        return Instance.factory[RocketType.Simple].ActiveObjects();
+    }
 }
