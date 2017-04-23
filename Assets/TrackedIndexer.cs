@@ -3,12 +3,30 @@ using System.Collections.Generic;
 using UnityEngine;
 
 public class TrackedIndexer : MonoBehaviour {
+    public bool IndexerEnabled;
     public TextMesh IndexerText;
+    public GameObject UndefinedTrackers;
     public SteamVR_TrackedObject BatTroller;
     public SteamVR_TrackedObject TrackedTurret;
     public SteamVR_TrackedObject TrackedShield;
 
     int currentDevice = 3;
+
+    void OnEnable()
+    {
+        if (IndexerEnabled)
+        {
+            BatTroller.index = SteamVR_TrackedObject.EIndex.None;
+            TrackedTurret.index = SteamVR_TrackedObject.EIndex.None;
+            TrackedShield.index = SteamVR_TrackedObject.EIndex.None;
+
+            UndefinedTrackers.SetActive(true);
+        } else
+        {
+            UndefinedTrackers.SetActive(false);
+            gameObject.SetActive(false);
+        }
+    }
 
     void OnTriggerEnter(Collider trackedObjectCollider)
     {
