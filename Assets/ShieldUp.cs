@@ -18,10 +18,14 @@ public class ShieldUp : MonoBehaviour {
     public GameObject ShieldBall;
 
     public AudioSource audioSource;
+    public AudioSource audioSourceLoop;
 
     private void Awake()
     {
-        audioSource = gameObject.GetComponent<AudioSource>();    
+        audioSource = gameObject.GetComponent<AudioSource>();
+        audioSourceLoop = gameObject.AddComponent<AudioSource>();
+        audioSourceLoop.loop = true;
+        audioSourceLoop.clip = SoundFX.ShieldActive;
     }
 
     private void Start()
@@ -60,12 +64,13 @@ public class ShieldUp : MonoBehaviour {
             Shieldup = true;
             ShieldBall.SetActive(true);
             audioSource.PlayOneShot(SoundFX.ShieldUp);
-
+            audioSourceLoop.PlayDelayed(1.15f);
         }
         if (Shieldup && !isGrounded)
         {
             Shieldup = false;
             ShieldBall.SetActive(false);
+            audioSourceLoop.Stop();
             audioSource.PlayOneShot(SoundFX.ShieldDown);
         }
         

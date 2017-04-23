@@ -58,7 +58,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!1 &1265678225169872
 GameObject:
   m_ObjectHideFlags: 1
@@ -74,6 +74,7 @@ GameObject:
   - component: {fileID: 114586067034423530}
   - component: {fileID: 114677828785511240}
   - component: {fileID: 114970253819649054}
+  - component: {fileID: 82475220828273856}
   m_Layer: 0
   m_Name: Turret
   m_TagString: Untagged
@@ -416,6 +417,86 @@ MeshFilter:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1060748998981208}
   m_Mesh: {fileID: 4300000, guid: ad095b8ff4a378c4399fcc51271328a4, type: 3}
+--- !u!82 &82475220828273856
+AudioSource:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1265678225169872}
+  m_Enabled: 1
+  serializedVersion: 4
+  OutputAudioMixerGroup: {fileID: 0}
+  m_audioClip: {fileID: 0}
+  m_PlayOnAwake: 0
+  m_Volume: 1
+  m_Pitch: 1
+  Loop: 0
+  Mute: 0
+  Spatialize: 0
+  SpatializePostEffects: 0
+  Priority: 128
+  DopplerLevel: 1
+  MinDistance: 1
+  MaxDistance: 500
+  Pan2D: 0
+  rolloffMode: 1
+  BypassEffects: 0
+  BypassListenerEffects: 0
+  BypassReverbZones: 0
+  rolloffCustomCurve:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 2
+      time: 0
+      value: 1
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+    - serializedVersion: 2
+      time: 1
+      value: 0
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 4
+  panLevelCustomCurve:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 2
+      time: 0
+      value: 1
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 0
+  spreadCustomCurve:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 2
+      time: 0
+      value: 0
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 0
+  reverbZoneMixCustomCurve:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 2
+      time: 0
+      value: 1
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 0
 --- !u!114 &114140862437270068
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -453,13 +534,14 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: bcb04aa23d37546cea7f812d68d0b2a2, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  fireRate: 0.3
+  fireRate: 0.2
   damage: 5
   fieldOfView: 20
   beam: 0
   projectile: {fileID: 1939583495936130, guid: da65ce3bb13ea4a0c80cce44dc2dfe63, type: 2}
   projectileSpawns:
   - {fileID: 1432113784058294}
+  audioSource: {fileID: 0}
 --- !u!114 &114677828785511240
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -495,5 +577,5 @@ SphereCollider:
   m_IsTrigger: 1
   m_Enabled: 1
   serializedVersion: 2
-  m_Radius: 30
-  m_Center: {x: 0, y: 0, z: 30}
+  m_Radius: 90
+  m_Center: {x: 0, y: 0, z: 90}

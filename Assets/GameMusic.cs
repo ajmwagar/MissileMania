@@ -8,7 +8,7 @@ public class GameMusic : MonoBehaviour
     private static GameMusic _instance;
     private static GameMusic Instance { get { return _instance; } }
 
-    [Range(0.5f, 1f)]
+    [Range(0.01f, 1f)]
     public float StartPlayingAtSec;
 
     private void Awake()
@@ -45,22 +45,48 @@ public class GameMusic : MonoBehaviour
 
     public void Update()
     {
-        if(GameMusicLevels[0].time > StartPlayingAtSec)
-        {
-            return;
-        }
 
-        // do turn on/off correct music level at the beginning of the music loop
-        for (int i = 1; i < GameMusicLevels.Length -1; i++)
+        if (currentLevel == 0)
         {
-            if(i <= currentLevel)
+            // playing intro music which doesn't get layered
+            
+            if (!GameMusicLevels[0].isPlaying)
             {
-                GameMusicLevels[i].Play();
-                GameMusicLevels[i].time = GameMusicLevels[0].time;
+                // stop all the other music layers
+                for (int i = 1; i < GameMusicLevels.Length; i++)
+                {
+                    GameMusicLevels[i].Stop();
+                }
+                GameMusicLevels[0].Play();
             }
-            else
+        }
+        else
+        {
+            // playing in play music which is layered so loop through the layers to turn the right ones on
+            GameMusicLevels[0].Stop();
+
+            if (!GameMusicLevels[1].isPlaying) { GameMusicLevels[1].Play(); }
+            
+            if (GameMusicLevels[1].time > StartPlayingAtSec)
             {
-                GameMusicLevels[i].Stop();
+                return;
+            }
+
+            // do turn on/off correct music level at the beginning of the music loop
+            for (int i = 2; i < GameMusicLevels.Length; i++)
+            {
+                if (i <= currentLevel)
+                {
+                    if (!GameMusicLevels[i].isPlaying)
+                    {
+                        GameMusicLevels[i].Play();
+                        GameMusicLevels[i].time = GameMusicLevels[1].time;
+                    }
+                }
+                else
+                {
+                    GameMusicLevels[i].Stop();
+                }
             }
         }
     }

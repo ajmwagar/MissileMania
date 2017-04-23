@@ -45,7 +45,6 @@ public class Rocket : MonoBehaviour {
     {
         BoomStick.SetActive(true);
         Debug.Log("Boom?");
-        audioSource.loop = false;
         audioSource.PlayOneShot(SoundFX.MissileExplosion);
     }
     public void DexplodeRocket()
@@ -63,7 +62,16 @@ public class Rocket : MonoBehaviour {
         explodeInSec = 3f;
         destroyInSec = 5 + explodeInSec;
     }
+    public void HitByOther()
+    {
+        Target = null;
+        rocketType = RocketType.HitByOther;
 
+        rb.velocity = rb.velocity * -2;
+
+        explodeInSec = 0f;
+        destroyInSec = 5 + explodeInSec;
+    }
     private void FixedUpdate()
     {
         if(rocketType == RocketType.Guided)
@@ -71,7 +79,7 @@ public class Rocket : MonoBehaviour {
             rb.velocity = (Target.transform.position - transform.position).normalized * speed;
             transform.rotation = Quaternion.LookRotation(rb.velocity) * Quaternion.Euler(rocketRotation);
         }
-        else if(rocketType == RocketType.HitByBat)
+        else if(rocketType == RocketType.HitByBat || rocketType == RocketType.HitByOther)
         {
 
             var rot = rb.rotation;
@@ -84,7 +92,6 @@ public class Rocket : MonoBehaviour {
             {
                 audioSource.Stop();
                 explodeRocket();
-                Debug.Log("Exploded!");
                 explodeInSec = 1000;
             }
 
@@ -92,10 +99,27 @@ public class Rocket : MonoBehaviour {
             {
                 RocketFactory.DestroyRocket(gameObject);
                 DexplodeRocket();
-                Debug.Log("Dexploded!");
+      
                 destroyInSec = 1000;
+
             }
         }
         
+    }
+    public void OnCollisionEnter(Collision collision)
+    {
+        if (collision.gameObject.tag != "Enemy" && collision.gameObject.tag != "Bat")
+        {
+            Debug.Log("Collided with projectile");
+
+            // reverse rocket direction
+            // set explosion time
+            collision.gameObject.GetComponent<Rocket>().HitByOther();
+
+            audioSource.PlayOneShot(SoundFX.BatHitFx);
+            audioSource.pitch = Random.Range(0.8f, 1.2f);
+            audioSource.volume = audioSource.volume * Random.Range(0.6f, 1f);
+            //RocketFactory.DestroyRocket(collision.gameObject);
+        }
     }
 }
