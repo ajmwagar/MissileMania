@@ -6,8 +6,6 @@ public class SoundFX : MonoBehaviour {
     private static SoundFX _instance;
     private static SoundFX Instance { get { return _instance; } }
 
-    public AudioClip gameMusic;
-
     public AudioClip missileLaunch;
     public AudioClip missileTravel;
     public AudioClip missileExplosion;
@@ -20,8 +18,9 @@ public class SoundFX : MonoBehaviour {
     public AudioClip smallTurretMovement;
     public AudioClip smallTurretStay;
 
+    public AudioClip batHitFx;
 
-    public AudioClip GameMusic { get { return Instance.GameMusic; } }
+    public AudioClip powerToolFx;
 
     public static AudioClip MissileLaunch { get { return Instance.missileLaunch; } }
     public static AudioClip MissileTravel { get { return Instance.missileTravel; } }
@@ -34,6 +33,15 @@ public class SoundFX : MonoBehaviour {
     public static AudioClip SmallTurretFire { get { return Instance.smallTurretFire; } }
     public static AudioClip SmallTurretMovement { get { return Instance.smallTurretMovement; } }
     public static AudioClip SmallTurretStay { get { return Instance.smallTurretStay; } }
+
+    public static AudioClip BatHitFx { get { return Instance.batHitFx; } }
+    public static AudioClip PowerToolFx { get { return Instance.powerToolFx; } }
+
+
+    public static void SetGameMusicLevel(int level)
+    {
+
+    }
 
     private void Awake()
     {
