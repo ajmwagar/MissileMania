@@ -43,15 +43,14 @@ public class Rocket : MonoBehaviour {
     }
     public void explodeRocket()
     {
-      //  BoomStick.SetActive(true);
+        BoomStick.SetActive(true);
         Debug.Log("Boom?");
         audioSource.loop = false;
-        audioSource.clip = null;
         audioSource.PlayOneShot(SoundFX.MissileExplosion);
     }
     public void DexplodeRocket()
     {
-        // BoomStick.SetActive(false);
+        BoomStick.SetActive(false);
         Debug.Log("UnBoom?");
     }
     public void HitByBat()
@@ -74,15 +73,16 @@ public class Rocket : MonoBehaviour {
         }
         else if(rocketType == RocketType.HitByBat)
         {
-            audioSource.Stop();
+
             var rot = rb.rotation;
             rot.z += 100 * Time.fixedDeltaTime;
-            rb.rotation = rot;
+            rb.rotation.Set(rot.x, rot.y, rot.z, rot.w);
 
             explodeInSec -= Time.fixedDeltaTime;
             destroyInSec -= Time.fixedDeltaTime;
             if (explodeInSec < 0)
             {
+                audioSource.Stop();
                 explodeRocket();
                 Debug.Log("Exploded!");
                 explodeInSec = 1000;
