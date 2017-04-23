@@ -13,9 +13,17 @@ public class RocketSpawner : MonoBehaviour {
 
     public AudioSource audioSource;
 
+    public float minDelay;
+    public float maxDelay;
+    public float fireCountdown;
+
     public void Awake()
     {
         audioSource = gameObject.GetComponent<AudioSource>();
+
+        minDelay = Random.Range(3, 5);
+        maxDelay = Random.Range(6, 8);
+        fireCountdown = 2;
     }
 
     // Update is called once per frame
@@ -41,6 +49,13 @@ public class RocketSpawner : MonoBehaviour {
             }
 
             Debug.Log("Now Spawning: " + rocketType.ToString());
+        }
+
+        fireCountdown -= Time.deltaTime;
+        if(fireCountdown < 0)
+        {
+            Spawn(rocketType);
+            fireCountdown = Random.Range(minDelay, maxDelay);
         }
     }
 
