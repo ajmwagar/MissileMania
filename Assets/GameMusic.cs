@@ -80,7 +80,7 @@ public class GameMusic : MonoBehaviour
                     if (!GameMusicLevels[i].isPlaying)
                     {
                         GameMusicLevels[i].Play();
-                        if (i > 1) { GameMusicLevels[i].time = GameMusicLevels[1].time; }
+                        GameMusicLevels[i].time = GameMusicLevels[1].time;
                     }
                 }
                 else
