@@ -7,7 +7,8 @@ public enum RocketType
 {
     Simple = 0,
     Guided = 1,
-    HitByBat = 2
+    HitByBat = 2,
+    HitByOther = 3
 }
 
 public class RocketFactory : MonoBehaviour {
