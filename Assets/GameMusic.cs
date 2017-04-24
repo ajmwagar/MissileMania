@@ -30,7 +30,7 @@ public class GameMusic : MonoBehaviour
 
     public void SetGameMusicLevel(int activeRocketCount)
     {
-        currentLevel = activeRocketCount / 10;
+        currentLevel = activeRocketCount / 5;
 
         if (currentLevel < 1)
         {
