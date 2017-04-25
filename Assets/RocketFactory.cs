@@ -37,7 +37,7 @@ public class RocketFactory : MonoBehaviour {
             factory.Add(RocketType.HitByBat, new GameObjectFactory("rocket_hitbybat"));
             factory.Add(RocketType.HitByOther, new GameObjectFactory("rocket_hitbyother"));
 
-            graveyardPosition = new Vector3(0, -2000, 0);
+            graveyardPosition = new Vector3(0, 100, 1000);
         }
     }
 

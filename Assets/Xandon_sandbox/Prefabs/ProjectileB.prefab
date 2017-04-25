@@ -24,9 +24,9 @@ GameObject:
   - component: {fileID: 23902485985663618}
   - component: {fileID: 114395603322496286}
   - component: {fileID: 114039664528558936}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: ProjectileB
-  m_TagString: Untagged
+  m_TagString: Bat
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -94,6 +94,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 9cf36f6edbda41d4da11c7a9a03d11b2, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  audioSource: {fileID: 0}
 --- !u!114 &114395603322496286
 MonoBehaviour:
   m_ObjectHideFlags: 1
