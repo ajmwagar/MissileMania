@@ -25,12 +25,18 @@ public class GameMusic : MonoBehaviour
 
     private void Start()
     {
+        for (int i = 0; i < GameMusicLevels.Length; i++)
+        {
+            GameMusicLevels[i].volume = .9f;
+            GameMusicLevels[i].priority = 0;
+        }
+
         GameMusicLevels[0].Play();
     }
 
     public void SetGameMusicLevel(int activeRocketCount)
     {
-        currentLevel = activeRocketCount / 10;
+        currentLevel = activeRocketCount / 3;
 
         if (currentLevel < 1)
         {
