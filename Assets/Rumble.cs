@@ -21,5 +21,6 @@ public class Rumble : MonoBehaviour {
     {
              rumbl.CreateHandle(AreaFlag.All_Areas).Play();
         Debug.Log("BOOM!");
+       
     }
 }
