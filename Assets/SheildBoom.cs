@@ -5,16 +5,27 @@ using UnityEngine;
 public class SheildBoom : MonoBehaviour {
 
     public GameObject ShieldSphere;
+    public AudioSource audioSource;
 
-	// Use this for initialization
-	void Start () {
-		
-	}
+    private float lowPitchRange = .75F;
+    private float highPitchRange = 1.5F;
+    private float velToVol = .08F;
+    private float velocityClipSplit = 2F;
+
+    // Use this for initialization
+    void Start () {
+        audioSource = gameObject.GetComponent<AudioSource>();
+    }
 
     // Update is called once per frame
-    private void OnTriggerEnter(Collider other)
+    public void OnCollisionEnter(Collision collision)
     {
-        
+        collision.gameObject.GetComponent<Rocket>().HitByBat();
+
+        audioSource.pitch = Random.Range(lowPitchRange, highPitchRange);
+        float hitVol = collision.relativeVelocity.magnitude * velToVol;
+
+        audioSource.PlayOneShot(SoundFX.BatHitFx, hitVol);
     }
 
 

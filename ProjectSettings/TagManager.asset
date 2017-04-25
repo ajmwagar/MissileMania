@@ -10,6 +10,7 @@ TagManager:
   - Enemy
   - UndefinedTracker
   - FxTemporaire
+  - Other
   layers:
   - Default
   - TransparentFX

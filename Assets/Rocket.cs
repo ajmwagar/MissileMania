@@ -71,8 +71,8 @@ public class Rocket : MonoBehaviour {
 
         rb.velocity = rb.velocity * -2;
 
-        explodeInSec = 3f;
-        destroyInSec = 5 + explodeInSec;
+        explodeInSec = 0.1f;
+        destroyInSec = 0.01f;
     }
     private void FixedUpdate()
     {
