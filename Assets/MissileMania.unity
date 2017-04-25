@@ -38,7 +38,7 @@ RenderSettings:
   m_ReflectionIntensity: 1
   m_CustomReflection: {fileID: 0}
   m_Sun: {fileID: 592417111}
-  m_IndirectSpecularColor: {r: 0.11260376, g: 0.03405369, b: 0.044793557, a: 1}
+  m_IndirectSpecularColor: {r: 0.11244724, g: 0.03398679, b: 0.044633564, a: 1}
 --- !u!157 &3
 LightmapSettings:
   m_ObjectHideFlags: 0
@@ -1507,6 +1507,9 @@ MonoBehaviour:
   FrameCount: 0
   rocketType: 0
   audioSource: {fileID: 0}
+  minDelay: 0
+  maxDelay: 0
+  fireCountdown: 0
 --- !u!1 &173834923
 GameObject:
   m_ObjectHideFlags: 0
@@ -1949,6 +1952,9 @@ MonoBehaviour:
   FrameCount: 0
   rocketType: 0
   audioSource: {fileID: 0}
+  minDelay: 0
+  maxDelay: 0
+  fireCountdown: 0
 --- !u!82 &200863071
 AudioSource:
   m_ObjectHideFlags: 0
@@ -16411,6 +16417,11 @@ Prefab:
       propertyPath: m_Enabled
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 54247830465358588, guid: 5f43d26ad63fc294b8eafbfd20e1526f,
+        type: 2}
+      propertyPath: m_CollisionDetection
+      value: 1
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 5f43d26ad63fc294b8eafbfd20e1526f, type: 2}
   m_IsPrefabParent: 0
@@ -21889,7 +21900,7 @@ Rigidbody:
   m_IsKinematic: 0
   m_Interpolate: 0
   m_Constraints: 126
-  m_CollisionDetection: 0
+  m_CollisionDetection: 1
 --- !u!23 &1330940097
 MeshRenderer:
   m_ObjectHideFlags: 0
@@ -21999,7 +22010,7 @@ AudioSource:
       tangentMode: 0
     m_PreInfinity: 2
     m_PostInfinity: 2
-    m_RotationOrder: 4
+    m_RotationOrder: 0
   reverbZoneMixCustomCurve:
     serializedVersion: 2
     m_Curve:
@@ -22893,6 +22904,9 @@ MonoBehaviour:
   FrameCount: 0
   rocketType: 0
   audioSource: {fileID: 0}
+  minDelay: 0
+  maxDelay: 0
+  fireCountdown: 0
 --- !u!82 &1546235609
 AudioSource:
   m_ObjectHideFlags: 0
@@ -23579,10 +23593,10 @@ Rigidbody:
   m_Drag: 0
   m_AngularDrag: 0.05
   m_UseGravity: 0
-  m_IsKinematic: 0
+  m_IsKinematic: 1
   m_Interpolate: 0
   m_Constraints: 4
-  m_CollisionDetection: 0
+  m_CollisionDetection: 1
 --- !u!199 &1616625291
 ParticleSystemRenderer:
   serializedVersion: 3
@@ -23691,7 +23705,7 @@ ParticleSystem:
   moveWithTransform: 1
   moveWithCustomTransform: {fileID: 0}
   scalingMode: 1
-  randomSeed: -1308851024
+  randomSeed: 1935493185
   InitialModule:
     serializedVersion: 3
     enabled: 1
