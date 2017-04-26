@@ -28,6 +28,7 @@ AudioMixerController:
     - 7027257c4941bdf4187d08330f048d8d
     - fb2ce409e57bf984da9a8fa4de31a058
     - b768b41cabe2bca4c9b81eb923bfb0ba
+    - fd6aba01df64b2942ab45cc7b21be5d1
     name: View
   m_CurrentViewIndex: 0
   m_TargetSnapshot: {fileID: 24500006}
@@ -45,6 +46,7 @@ AudioMixerGroupController:
   - {fileID: 243068382216528828}
   - {fileID: 243189246048739906}
   - {fileID: 243071181698829270}
+  - {fileID: 243874534380181390}
   m_Volume: 23b4713ca667f6e4dbbf5ab25bccc2f4
   m_Pitch: e19f9c98dcbb3d14bbad379ce741d2bd
   m_Effects:
@@ -204,6 +206,36 @@ AudioMixerGroupController:
   m_Mute: 0
   m_Solo: 0
   m_BypassEffects: 0
+--- !u!243 &243874534380181390
+AudioMixerGroupController:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_Name: Turret
+  m_AudioMixer: {fileID: 24100000}
+  m_GroupID: fd6aba01df64b2942ab45cc7b21be5d1
+  m_Children: []
+  m_Volume: 40c43eac119927146b1a16d269d5849e
+  m_Pitch: e88150254acf975419b53d50432b0e58
+  m_Effects:
+  - {fileID: 244002396722478218}
+  m_UserColorIndex: 0
+  m_Mute: 0
+  m_Solo: 0
+  m_BypassEffects: 0
+--- !u!244 &244002396722478218
+AudioMixerEffectController:
+  m_ObjectHideFlags: 3
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_Name: 
+  m_EffectID: 5eec7412392932842a95086514317a56
+  m_EffectName: Attenuation
+  m_MixLevel: 44152bf8606a9414b8b0f12759e8ee60
+  m_Parameters: []
+  m_SendTarget: {fileID: 0}
+  m_EnableWetMix: 0
+  m_Bypass: 0
 --- !u!244 &244188630455468470
 AudioMixerEffectController:
   m_ObjectHideFlags: 3
