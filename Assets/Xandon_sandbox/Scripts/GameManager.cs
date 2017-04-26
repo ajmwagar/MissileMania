@@ -20,6 +20,7 @@ public class GameManager : MonoBehaviour
     [Header("UI Elements")]
     public Text timeText;           //The UI element that shows the amount of time
     public Text collectText;        //The UI element that shows the player's score
+    public GameObject menuPanel;     //The panel that will pop up when the player wins
     public GameObject winPanel;     //The panel that will pop up when the player wins	
     public GameObject lossPanel;    //The panel that will pop up when the player loses
 
@@ -67,6 +68,7 @@ public class GameManager : MonoBehaviour
             gameover = true;
             //...and show the Loss Panel
             lossPanel.SetActive(true);
+            menuPanel.SetActive(true);
         }
 
         ChangeTimeScale();
@@ -144,6 +146,7 @@ public class GameManager : MonoBehaviour
         gameover = true;
         //Show the Win Panel
         winPanel.SetActive(true);
+        menuPanel.SetActive(true);
     }
 
     //This method is called from the Player's script. We only want the player to be
