@@ -69,9 +69,54 @@ public class GameManager : MonoBehaviour
             lossPanel.SetActive(true);
         }
 
+        ChangeTimeScale();
+
         //Update the UI to show the remaining time
         timeText.text = ((int)timeAmount).ToString();
     }
+
+
+    public void ChangeTimeScale()
+    {
+
+        if (score <= 20 && timeAmount < 160f)
+        {
+            Time.timeScale = 1.0F;
+            Time.fixedDeltaTime = 0.02F * Time.timeScale;
+        }
+        else if (score <= 40 && timeAmount < 130f)
+        {
+            Time.timeScale = 1.0F;
+            Time.fixedDeltaTime = 0.02F * Time.timeScale;
+        }
+        else if (score > 400)
+        {
+            Time.timeScale = 3.0F;
+            Time.fixedDeltaTime = 0.02F * Time.timeScale;
+        }
+        else if (score > 200)
+        {
+            Time.timeScale = 2.0F;
+            Time.fixedDeltaTime = 0.02F * Time.timeScale;
+        }
+        else if (score > 100)
+        {
+            Time.timeScale = 1.8F;
+            Time.fixedDeltaTime = 0.02F * Time.timeScale;
+        }
+        else if (score > 80)
+        {
+            Time.timeScale = 1.5F;
+            Time.fixedDeltaTime = 0.02F * Time.timeScale;
+        }
+        else if (score > 40)
+        {
+            Time.timeScale = 1.2F;
+            Time.fixedDeltaTime = 0.02F * Time.timeScale;
+        }
+
+    }
+
 
     //This method is called from the CollectableSpawner when the player picks up a shield
     public void PlayerScored()
