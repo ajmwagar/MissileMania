@@ -25,7 +25,7 @@ public class RumbleFront : MonoBehaviour {
 
   void OnCollisionEnter (Collision collision){
      rumbl.CreateHandle(AreaFlag.Chest_Both).Play();
-      Debug.Log(collision.gameObject + "collided with" + collider.gameObject);
+      Debug.Log(collision.gameObject + "collided with" + gameObject);
      }
 
   }
