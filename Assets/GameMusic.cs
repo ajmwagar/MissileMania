@@ -36,6 +36,13 @@ public class GameMusic : MonoBehaviour
 
     public void SetGameMusicLevel(int activeRocketCount)
     {
+        // play mello intro music if there are no rockets
+        if (activeRocketCount == 0)
+        {
+            currentLevel = 0;
+            return;
+        }
+
         currentLevel = activeRocketCount / 3;
 
         if (currentLevel < 1)

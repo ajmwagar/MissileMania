@@ -7,7 +7,7 @@ public class BatWeapon : MonoBehaviour {
     public AudioSource audioSource;
 
 	private float lowPitchRange = .75F;
-	private float highPitchRange = 1.25F;
+	private float highPitchRange = 1.1F;
 	private float velToVol = .15F;
 	private float velocityClipSplit = 10F;
 

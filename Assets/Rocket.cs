@@ -22,6 +22,9 @@ public class Rocket : MonoBehaviour {
     private void Awake()
     {
         audioSource_missileThrust = gameObject.GetComponent<AudioSource>();
+        audioSource_missileThrust.rolloffMode = AudioRolloffMode.Linear;
+        audioSource_missileThrust.dopplerLevel = 4;
+
     }
     // Update is called once per frame
     void Update () {
