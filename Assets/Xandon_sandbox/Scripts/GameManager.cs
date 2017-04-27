@@ -27,6 +27,8 @@ public class GameManager : MonoBehaviour
     public GameObject menuPanel;     //The panel that will pop up when the player wins
     public GameObject winPanel;     //The panel that will pop up when the player wins	
     public GameObject lossPanel;    //The panel that will pop up when the player loses
+    public GameObject credits;
+    public GameObject logo;
 
     int score;      //Player's current score
     bool gameover;  //Is the game over?
@@ -74,12 +76,16 @@ public class GameManager : MonoBehaviour
             //...and show the Loss Panel
             lossPanel.SetActive(true);
             menuPanel.SetActive(true);
+            credits.SetActive(true);
+            logo.SetActive(true);
             GameMusic.Instance.SetInMenu(true);
             introSnapshot.TransitionTo(0);
         }
         else {
             lossPanel.SetActive(false);
             menuPanel.SetActive(false);
+            credits.SetActive(false);
+            logo.SetActive(false);
         }
 
         ChangeTimeScale();
@@ -165,6 +171,8 @@ public class GameManager : MonoBehaviour
         //Show the Win Panel
         winPanel.SetActive(true);
         menuPanel.SetActive(true);
+        credits.SetActive(true);
+        logo.SetActive(true);
         GameMusic.Instance.SetInMenu(true);
         introSnapshot.TransitionTo(0);
         playSnapshot.TransitionTo(1);
