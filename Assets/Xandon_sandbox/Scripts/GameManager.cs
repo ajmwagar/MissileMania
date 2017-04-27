@@ -117,6 +117,13 @@ public class GameManager : MonoBehaviour
             Time.fixedDeltaTime = 0.02F * Time.timeScale;
         }
 
+
+        if (timeAmount <= 0)
+        {
+            Time.timeScale = 0.0F;
+            Time.fixedDeltaTime = 0.02F * Time.timeScale;
+        }
+
     }
 
 
