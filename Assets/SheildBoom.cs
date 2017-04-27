@@ -8,7 +8,7 @@ public class SheildBoom : MonoBehaviour {
     public AudioSource audioSource;
 
     private float lowPitchRange = .75F;
-    private float highPitchRange = 1.5F;
+    private float highPitchRange = 1.1F;
     private float velToVol = .08F;
     private float velocityClipSplit = 2F;
 
@@ -24,6 +24,7 @@ public class SheildBoom : MonoBehaviour {
 
         audioSource.pitch = Random.Range(lowPitchRange, highPitchRange);
         float hitVol = collision.relativeVelocity.magnitude * velToVol;
+        if (hitVol > 1) { hitVol = 1; }
 
         audioSource.PlayOneShot(SoundFX.BatHitFx, hitVol);
     }
