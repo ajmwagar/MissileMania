@@ -14,9 +14,11 @@ public class GameManager : MonoBehaviour
     public static GameManager instance;
 
     [Header("Game Properties")]
-    public int scoreToWin = 4;      //Amount of points the player needs to lower the wall
-    public float timeAmount = 60f;  //How long the player has to reach the goal
+    public int scoreToWin = 500;      //Amount of points the player needs to lower the wall
+    public float timeAmount = 0.01f;  //How long the player has to reach the goal
+    public float levelTime = 180f;  //How long the player has to reach the goal
     public AudioMixerSnapshot introSnapshot;
+    public AudioMixerSnapshot playSnapshot;
 
 
     [Header("UI Elements")]
@@ -45,6 +47,7 @@ public class GameManager : MonoBehaviour
         //Set our initial UI text for score and the amount of time
         collectText.text = score + " / " + scoreToWin;
         timeText.text = ((int)timeAmount).ToString();
+        //StartGame();
     }
 
     void Update()
@@ -62,10 +65,10 @@ public class GameManager : MonoBehaviour
         timeAmount -= Time.deltaTime;
 
         //If the player's time is now at or below zero...
-        if (timeAmount <= 0f)
+        if (timeAmount <= 0.02f)
         {
             //...set the time to zero...
-            timeAmount = 0f;
+            timeAmount = 0.01f;
             //...record that the game is now over...
             gameover = true;
             //...and show the Loss Panel
@@ -73,6 +76,10 @@ public class GameManager : MonoBehaviour
             menuPanel.SetActive(true);
             GameMusic.Instance.SetInMenu(true);
             introSnapshot.TransitionTo(0);
+        }
+        else {
+            lossPanel.SetActive(false);
+            menuPanel.SetActive(false);
         }
 
         ChangeTimeScale();
@@ -85,7 +92,7 @@ public class GameManager : MonoBehaviour
     public void ChangeTimeScale()
     {
 
-        if (score <= 20 && timeAmount < 160f)
+        if (score <= 20 && timeAmount < 160f && Time.timeScale > 1.0F)
         {
             Time.timeScale = 1.0F;
             Time.fixedDeltaTime = 0.02F * Time.timeScale;
@@ -122,9 +129,9 @@ public class GameManager : MonoBehaviour
         }
 
 
-        if (timeAmount <= 0)
+        if (timeAmount <= 0.02)
         {
-            Time.timeScale = 0.0F;
+            Time.timeScale = 0.01F;
             Time.fixedDeltaTime = 0.02F * Time.timeScale;
         }
 
@@ -160,6 +167,7 @@ public class GameManager : MonoBehaviour
         menuPanel.SetActive(true);
         GameMusic.Instance.SetInMenu(true);
         introSnapshot.TransitionTo(0);
+        playSnapshot.TransitionTo(1);
     }
 
     //This method is called from the Player's script. We only want the player to be
@@ -168,6 +176,8 @@ public class GameManager : MonoBehaviour
     {
         //Return whether or not the game is over
         return gameover;
+        introSnapshot.TransitionTo(1);
+        playSnapshot.TransitionTo(0);
     }
 
     //This methid is called from the AdManager when the player watches a rewarded ad
@@ -188,6 +198,24 @@ public class GameManager : MonoBehaviour
         //Reload the current scene
         SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex);
     }
+
+    //This method is called from the "Play Again" buttons in the UI
+    public void StartGame()
+    {
+        score = 0;
+        timeAmount = levelTime;
+        Time.timeScale = 1.0F;
+        Time.fixedDeltaTime = 0.02F * Time.timeScale;
+        if (gameover)
+        {
+            gameover = false;
+        }
+        
+        GameMusic.Instance.SetInMenu(false);
+        introSnapshot.TransitionTo(0);
+        playSnapshot.TransitionTo(1);
+    }
+
 
     //This method allows the player to exit the game either by pressing the correct key or
     //selecting to exit the game from the UI
