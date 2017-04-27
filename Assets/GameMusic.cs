@@ -6,10 +6,12 @@ public class GameMusic : MonoBehaviour
 {
 
     private static GameMusic _instance;
-    private static GameMusic Instance { get { return _instance; } }
+    public static GameMusic Instance { get { return _instance; } }
 
     [Range(0.01f, 1f)]
     public float StartPlayingAtSec;
+
+    private bool inMenu = false;
 
     private void Awake()
     {
@@ -33,11 +35,18 @@ public class GameMusic : MonoBehaviour
 
         GameMusicLevels[0].Play();
     }
-
+    public void SetInMenu(bool b)
+    {
+        inMenu = b;
+        currentLevel = 0;
+        this.Update();
+        
+    }
     public void SetGameMusicLevel(int activeRocketCount)
     {
+
         // play mello intro music if there are no rockets
-        if (activeRocketCount == 0)
+        if (activeRocketCount == 0 || inMenu)
         {
             currentLevel = 0;
             return;
