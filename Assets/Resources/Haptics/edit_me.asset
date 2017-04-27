@@ -1,0 +1,14 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: -1559977699, guid: 8fdd10f4fd778244b98fcc9dc887d73c, type: 3}
+  m_Name: edit_me
+  m_EditorClassIdentifier: 
+  json: '{"sequence_definitions":{"my.edit_me":[{"effect":"fuzz","duration":0.0,"strength":1.0,"time":0.1599999964237213},{"effect":"bump","duration":0.0,"strength":1.0,"time":0.20000000298023225},{"effect":"sharp_tick","duration":0.0,"strength":0.5,"time":0.699999988079071}]},"pattern_definitions":{},"experience_definitions":{},"root_effect":{"name":"my.edit_me","type":"sequence"}}'
