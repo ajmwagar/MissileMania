@@ -20,8 +20,25 @@ public class BatWeapon : MonoBehaviour {
     {
         if (collision.gameObject.tag == "Enemy")
         {
-            //Debug.Log("Collided with projectile");
+            //Debug.Log(gameObject.name + " collided with " + collision.gameObject.name);
 
+
+            var rocketScript = collision.gameObject.GetComponent<Rocket>();
+            if (rocketScript == null)
+            {
+                // ROCKET HIT BULLET
+                BulletFactory.DestroyBullet(collision.gameObject);
+                var thisRocketScript = gameObject.GetComponent<Rocket>();
+
+                if(thisRocketScript != null)
+                {
+                    thisRocketScript.HitByOther();
+                }
+                return;
+            }
+
+            // BAT HIT ROCKET
+            // OR ROCKET HIT ROCKET
             // reverse rocket direction
             // set explosion time
             collision.gameObject.GetComponent<Rocket>().HitByBat();
