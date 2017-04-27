@@ -69,6 +69,7 @@ public class GameManager : MonoBehaviour
             //...and show the Loss Panel
             lossPanel.SetActive(true);
             menuPanel.SetActive(true);
+            GameMusic.Instance.SetInMenu(true);
         }
 
         ChangeTimeScale();
@@ -154,6 +155,7 @@ public class GameManager : MonoBehaviour
         //Show the Win Panel
         winPanel.SetActive(true);
         menuPanel.SetActive(true);
+        GameMusic.Instance.SetInMenu(true);
     }
 
     //This method is called from the Player's script. We only want the player to be
