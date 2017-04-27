@@ -695,6 +695,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   scoreToWin: 500
   timeAmount: 180
+  introSnapshot: {fileID: 245648646581582970, guid: 4e8fbf0c6b172c74984029f4ce0bc580,
+    type: 2}
   timeText: {fileID: 2005799912}
   collectText: {fileID: 1447309966}
   menuPanel: {fileID: 1176797248}

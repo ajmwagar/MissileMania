@@ -4,6 +4,7 @@
 using UnityEngine;
 using UnityEngine.UI;				//Enable UI items in script
 using UnityEngine.SceneManagement;	//Enable scene management in script
+using UnityEngine.Audio;
 
 public class GameManager : MonoBehaviour
 {
@@ -15,6 +16,7 @@ public class GameManager : MonoBehaviour
     [Header("Game Properties")]
     public int scoreToWin = 4;      //Amount of points the player needs to lower the wall
     public float timeAmount = 60f;  //How long the player has to reach the goal
+    public AudioMixerSnapshot introSnapshot;
 
 
     [Header("UI Elements")]
@@ -70,6 +72,7 @@ public class GameManager : MonoBehaviour
             lossPanel.SetActive(true);
             menuPanel.SetActive(true);
             GameMusic.Instance.SetInMenu(true);
+            introSnapshot.TransitionTo(0);
         }
 
         ChangeTimeScale();
@@ -156,6 +159,7 @@ public class GameManager : MonoBehaviour
         winPanel.SetActive(true);
         menuPanel.SetActive(true);
         GameMusic.Instance.SetInMenu(true);
+        introSnapshot.TransitionTo(0);
     }
 
     //This method is called from the Player's script. We only want the player to be
