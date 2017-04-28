@@ -17,7 +17,7 @@ public class RumbleFront : MonoBehaviour {
 
 
     // Update is called once per frame
-    void OnTriggerEnter(Collision collision){
+    void OnTriggerEnter(){
       rumbl.CreateHandle(AreaFlag.Chest_Both).Play();
       Debug.Log("Working");
 

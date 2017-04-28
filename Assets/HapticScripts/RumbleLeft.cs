@@ -17,7 +17,7 @@ public class RumbleLeft : MonoBehaviour {
 
 
     // Update is called once per frame
-    void OnTriggerEnter(Collision collision){
+    void OnTriggerEnter(){
       rumbl.CreateHandle(AreaFlag.Left_All).Play();
       Debug.Log("Working");
 
