@@ -1,5 +1,5 @@
 using NullSpace.SDK;
-﻿using UnityEngine;
+	﻿using UnityEngine;
 
 public class BatHaptics : MonoBehaviour {
 	public bool Lefty;
@@ -22,7 +22,7 @@ void Start () {
 		HandPicker.SetActive(false);
 
 	}
-public	void SelRight ()
+public void SelRight ()
   {
 		Lefty = false;
 		Righty = true;
